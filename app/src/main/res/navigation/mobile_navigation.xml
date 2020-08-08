@@ -3,23 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_laptop_list">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.logicmarketchallenge.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_laptop_list"
+        android:name="com.example.logicmarketchallenge.ui.fragments.fragmentLaptopList.FragmentLaptopList"
+        android:label="@string/title_laptop_list"
+        tools:layout="@layout/fragment_laptop_list">
+        <action
+            android:id="@+id/action_laptopList_to_productDetail"
+            app:destination="@id/nav_product_detail" />
+    </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.logicmarketchallenge.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_product_detail"
+        android:name="com.example.logicmarketchallenge.ui.fragments.fragmentProductDetail.FragmentProductDetail"
+        android:label="@string/title_product_detail"
+        tools:layout="@layout/fragment_product_detail" />
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.logicmarketchallenge.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
 </navigation>
