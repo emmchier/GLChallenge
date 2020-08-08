@@ -1,5 +1,15 @@
 <resources>
+
     <string name="app_name">Logic Market</string>
     <string name="title_laptop_list">Laptops</string>
     <string name="title_product_detail">Detalle del producto</string>
+    <string name="laptop_title">Product Title</string>
+    <string name="laptop_description">Product description</string>
+    <string name="envio_con_normalidad">Envío con normalidad</string>
+    <string name="error_message">No se encontraron datos con la búsqueda. Porfavor vuelva a internarlo</string>
+    <string name="description_image">Imágen del producto</string>
+    <string name="description_like_icon">favourite icon</string>
+    <string name="product_title_lower">Product Title</string>
+    <string name="nuevo_1284_vendidos">Nuevo | 1284 vendidos</string>
+
 </resources>
