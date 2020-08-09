@@ -7,7 +7,9 @@ import com.example.logicmarketchallenge.core.entities.Laptop;
 import com.example.logicmarketchallenge.ui.fragments.fragmentLaptopList.FragmentLaptopListContract;
 import com.example.logicmarketchallenge.ui.fragments.fragmentLaptopList.FragmentLaptopListInteractor;
 import java.util.List;
-
+/*
+ * viewmodel que obtiene y guarda datos del servicio.
+ */
 public class ViewModelLaptop extends ViewModel implements FragmentLaptopListContract.viewModel {
 
     private FragmentLaptopListContract.interactor interactor;

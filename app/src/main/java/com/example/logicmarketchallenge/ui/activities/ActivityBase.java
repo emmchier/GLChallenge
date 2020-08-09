@@ -1,5 +1,7 @@
 package com.example.logicmarketchallenge.ui.activities;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
@@ -10,24 +12,25 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import com.example.logicmarketchallenge.R;
+import com.example.logicmarketchallenge.databinding.ActivityBaseBinding;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ActivityBase extends AppCompatActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
     private AppBarConfiguration mAppBarConfiguration;
     private NavController navController;
+    private ActivityBaseBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
+        binding = ActivityBaseBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+        setSupportActionBar(binding.base.toolbar);
         setNavigation();
     }
 

@@ -6,7 +6,9 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
+/*
+ * Se obtiene la respuesta del servicio
+ */
 public class FragmentLaptopListInteractor implements FragmentLaptopListContract.interactor{
 
     private FragmentLaptopListContract.viewModel viewModel;

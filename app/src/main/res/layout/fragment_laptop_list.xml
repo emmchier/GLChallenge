@@ -16,8 +16,8 @@
 
         <ProgressBar
             android:id="@+id/progressBarProductList"
-            android:layout_width="60sp"
-            android:layout_height="60sp"
+            android:layout_width="@dimen/base_space_60"
+            android:layout_height="@dimen/base_space_60"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -2,6 +2,8 @@ package com.example.logicmarketchallenge.core.entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.bumptech.glide.Glide;
+
 public class Laptop implements Parcelable {
 
     private String title;

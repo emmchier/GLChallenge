@@ -1,7 +1,9 @@
 package com.example.logicmarketchallenge.ui.fragments.fragmentLaptopList;
 import com.example.logicmarketchallenge.core.entities.Laptop;
 import java.util.List;
-
+/*
+ * contrato compartido entre viewmodel e interactor
+ */
 public interface FragmentLaptopListContract {
 
     interface viewModel{
@@ -12,5 +14,4 @@ public interface FragmentLaptopListContract {
     interface interactor{
         void getProducts();
     }
-
 }

@@ -3,22 +3,23 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.logicmarketchallenge.R;
 import com.example.logicmarketchallenge.core.entities.Laptop;
-import com.makeramen.roundedimageview.RoundedImageView;
+import com.example.logicmarketchallenge.databinding.CellLaptopBinding;
 import java.util.ArrayList;
 import java.util.List;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
+/*
+ * adaptador para Recyclerview en FragmentLaptopList
+ */
 public class AdapterRecyclerViewLaptops extends RecyclerView.Adapter {
 
     private List<Laptop> laptpopList;
     private ProductListListener listListener;
+    private CellLaptopBinding cell;
 
     public AdapterRecyclerViewLaptops(ProductListListener listListener) {
         this.laptpopList = new ArrayList<>();
@@ -30,7 +31,7 @@ public class AdapterRecyclerViewLaptops extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View productCell = layoutInflater.inflate(R.layout.cell_laptop, parent, false);
+        CellLaptopBinding productCell = CellLaptopBinding.bind(layoutInflater.inflate(R.layout.cell_laptop, parent, false));
         ProductViewHolder viewHolder = new ProductViewHolder(productCell);
 
         return viewHolder;
@@ -56,18 +57,11 @@ public class AdapterRecyclerViewLaptops extends RecyclerView.Adapter {
 
     public class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.roundedImageProduct)
-        RoundedImageView roundedImageProduct;
+        private CellLaptopBinding binding;
 
-        @BindView(R.id.textViewProductTitle)
-        TextView textViewProductTitle;
-
-        @BindView(R.id.textViewProductDescription)
-        TextView textViewProductDescription;
-
-        public ProductViewHolder(@NonNull View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
+        public ProductViewHolder(CellLaptopBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -80,13 +74,13 @@ public class AdapterRecyclerViewLaptops extends RecyclerView.Adapter {
             Glide.with(itemView).load(laptop.getImage())
                     .placeholder(R.drawable.ic_laptop)
                     .error(R.drawable.ic_laptop)
-                    .into(roundedImageProduct);
-            textViewProductTitle.setText(laptop.getTitle());
-            textViewProductDescription.setText(laptop.getDescription());
+                    .into(binding.roundedImageProduct);
+            binding.textViewProductTitle.setText(laptop.getTitle());
+            binding.textViewProductDescription.setText(laptop.getDescription());
         }
     }
 
     public interface ProductListListener {
-        void showProductDetail(Integer posicion);
+        void showProductDetail(Integer position);
     }
 }

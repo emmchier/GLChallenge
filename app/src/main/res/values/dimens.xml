@@ -6,6 +6,9 @@
     <dimen name="mini_text">10sp</dimen>
     <dimen name="base_space">16sp</dimen>
     <dimen name="base_space_20">20sp</dimen>
+    <dimen name="base_space_30">30sp</dimen>
+    <dimen name="base_space_40">40sp</dimen>
+    <dimen name="base_space_60">60sp</dimen>
     <dimen name="base_long_space">25sp</dimen>
     <dimen name="base_small_space">10sp</dimen>
     <dimen name="base_mini_space">5sp</dimen>
@@ -23,5 +26,7 @@
     <dimen name="base_mini_icon">15sp</dimen>
     <dimen name="base_icon">25sp</dimen>
     <dimen name="base_title_detail">30sp</dimen>
+    <dimen name="image_header_height">280sp</dimen>
+    <dimen name="translation_y">-55sp</dimen>
 
 </resources>

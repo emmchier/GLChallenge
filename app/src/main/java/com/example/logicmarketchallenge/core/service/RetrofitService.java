@@ -1,9 +1,10 @@
 package com.example.logicmarketchallenge.core.service;
-import com.example.logicmarketchallenge.R;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
+/*
+ * conexión con la API mediante Retrofit2
+ */
 public class RetrofitService {
 
     private static Retrofit retrofit;

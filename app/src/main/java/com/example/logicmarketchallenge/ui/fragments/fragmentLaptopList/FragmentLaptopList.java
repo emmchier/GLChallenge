@@ -19,33 +19,28 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.logicmarketchallenge.R;
 import com.example.logicmarketchallenge.adapters.AdapterRecyclerViewLaptops;
 import com.example.logicmarketchallenge.core.entities.Laptop;
+import com.example.logicmarketchallenge.databinding.FragmentLaptopListBinding;
+import com.example.logicmarketchallenge.databinding.FragmentProductDetailBinding;
 import com.example.logicmarketchallenge.ui.viewmodels.ViewModelLaptop;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+/*
+ * Home de la app. Fragmento que muestra la lista de objetos Laptop
+ */
 public class FragmentLaptopList extends Fragment implements AdapterRecyclerViewLaptops.ProductListListener,
         SwipeRefreshLayout.OnRefreshListener {
 
     public static final String LAPTOP_POSITION = "laptop";
-
-    @BindView(R.id.recyclerViewProductList)
-    RecyclerView recyclerViewProductList;
-
-    @BindView(R.id.progressBarProductList)
-    ProgressBar progressBarProductList;
-
-    @BindView(R.id.swipeReflesh)
-    SwipeRefreshLayout swipeReflesh;
-
     private AdapterRecyclerViewLaptops adapter;
     private ViewModelLaptop viewModel;
+    private FragmentLaptopListBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View fragmentListView = inflater.inflate(R.layout.fragment_laptop_list, container, false);
-        ButterKnife.bind(this, fragmentListView);
+        binding = FragmentLaptopListBinding.inflate(inflater, container, false);
+        View fragmentListView = binding.getRoot();
         initViews();
         initRecyclerViewProducts();
         setUpViewModel();
@@ -68,7 +63,7 @@ public class FragmentLaptopList extends Fragment implements AdapterRecyclerViewL
         final Observer<Integer> observerProgressBar = new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                progressBarProductList.setVisibility(integer);
+                binding.progressBarProductList.setVisibility(integer);
             }
         };
         viewModel.progressBarIsShowing().observe(requireActivity(),observerProgressBar);
@@ -77,25 +72,24 @@ public class FragmentLaptopList extends Fragment implements AdapterRecyclerViewL
             @Override
             public void onChanged(Boolean error) {
                 if(error){
-                    Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.error_system), Toast.LENGTH_SHORT).show();
                 }
             }
         };
         viewModel.isErrorService().observe(requireActivity(),observerErrorService);
-
     }
 
     private void initRecyclerViewProducts() {
         adapter = new AdapterRecyclerViewLaptops(this);
-        recyclerViewProductList.setAdapter(adapter);
+        binding.recyclerViewProductList.setAdapter(adapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),
                 RecyclerView.VERTICAL, false);
-        recyclerViewProductList.setLayoutManager(layoutManager);
+        binding.recyclerViewProductList.setLayoutManager(layoutManager);
     }
 
     private void initViews() {
-        progressBarProductList.setVisibility(View.VISIBLE);
-        swipeReflesh.setOnRefreshListener(this);
+        binding.progressBarProductList.setVisibility(View.VISIBLE);
+        binding.swipeReflesh.setOnRefreshListener(this);
     }
 
     @Override
@@ -104,15 +98,15 @@ public class FragmentLaptopList extends Fragment implements AdapterRecyclerViewL
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                swipeReflesh.setRefreshing(false);
+                binding.swipeReflesh.setRefreshing(false);
             }
         }, 2000);
     }
 
     @Override
-    public void showProductDetail(Integer posicion) {
+    public void showProductDetail(Integer position) {
         Bundle bundle = new Bundle();
-        bundle.putInt(LAPTOP_POSITION, posicion);
-        Navigation.findNavController(this.recyclerViewProductList).navigate(R.id.action_laptopList_to_productDetail, bundle);
+        bundle.putInt(LAPTOP_POSITION, position);
+        Navigation.findNavController(this.binding.recyclerViewProductList).navigate(R.id.action_laptopList_to_productDetail, bundle);
     }
 }
