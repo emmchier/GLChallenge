@@ -14,7 +14,6 @@ import com.example.logicmarketchallenge.databinding.FragmentProductDetailBinding
 import com.example.logicmarketchallenge.ui.fragments.fragmentLaptopList.FragmentLaptopList;
 import com.example.logicmarketchallenge.ui.viewmodels.ViewModelLaptop;
 import com.google.android.material.snackbar.Snackbar;
-
 import java.util.List;
 /*
  * se muestra el detalle de cada ítem del Recyclerview
@@ -49,7 +48,7 @@ public class FragmentProductDetail extends Fragment {
         binding.constraitBtnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Añadiste " + viewModel.getLaptopsList().getValue().get(position).getTitle() + " a tu carrito",
+                Snackbar.make(view, "Agregaste " + viewModel.getLaptopsList().getValue().get(position).getTitle() + " a tu carrito",
                         Snackbar.LENGTH_LONG).show();
             }
         });
