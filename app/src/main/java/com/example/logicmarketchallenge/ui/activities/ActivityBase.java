@@ -11,7 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import com.example.logicmarketchallenge.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class ActivityBase extends AppCompatActivity {
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     private AppBarConfiguration mAppBarConfiguration;
     private NavController navController;
@@ -20,13 +26,9 @@ public class ActivityBase extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-        initToolbar();
-        setNavigation();
-    }
-
-    private void initToolbar() {
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        setNavigation();
     }
 
     private void setNavigation() {

@@ -3,7 +3,6 @@
     <string name="app_name">Logic Market</string>
     <string name="title_laptop_list">Laptops</string>
     <string name="title_product_detail">Detalle del producto</string>
-    <string name="laptop_title">Product Title</string>
     <string name="laptop_description">Product description</string>
     <string name="envio_con_normalidad">Envío con normalidad</string>
     <string name="error_message">No se encontraron datos con la búsqueda. Porfavor vuelva a internarlo</string>
